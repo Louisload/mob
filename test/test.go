@@ -2,6 +2,7 @@ package test
 
 import (
 	"fmt"
+	"github.com/remotemobprogramming/mob/v4/git"
 	"github.com/remotemobprogramming/mob/v4/say"
 	"io/ioutil"
 	"path/filepath"
@@ -14,6 +15,7 @@ import (
 
 var (
 	workingDir string
+	tempDir    string
 )
 
 func Equals(t *testing.T, exp, act interface{}) {
@@ -41,6 +43,7 @@ func CreateFile(t *testing.T, filename string, content string) (pathToFile strin
 
 func SetWorkingDir(dir string) {
 	workingDir = dir
+	git.WorkingDir = dir
 	say.Say("\n===== cd " + dir)
 }
 
